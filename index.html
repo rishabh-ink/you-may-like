@@ -40,7 +40,14 @@
                 </div>
             </form>
 
-            <div class="results"></div>
+            <div class="results">                
+                <ul data-bind="foreach: items">
+                    <li>
+                        <strong data-bind="text: name"></strong>
+                        <em data-bind="text: type"></em>
+                    </li>
+                </ul>
+            </div>
 
             <hr />
 
