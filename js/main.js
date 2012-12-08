@@ -10,23 +10,13 @@ jQuery(document).ready(function() {
       var self = this;
 
       self.items = ko.observableArray();
+      
+      self.inputQuery = ko.observable("Harry Potter");
 
       self.initialize = function() {
-         var harryPotter = new ItemModel();
-         harryPotter.name("Harry Potter");
-         harryPotter.type("Book");
-
-         var castle = new ItemModel();
-         castle.name("Richard Castle");
-         castle.type("TV Show");
-
-         self.items.push(harryPotter);
-         self.items.push(castle);
-
-         self.getItems("harry potter");
       };
 
-      self.getItems = function(query) {
+      self.getItems = function() {
          jQuery.ajax({
            url: "http://www.tastekid.com/ask/ws",
            type: "GET",
@@ -35,7 +25,7 @@ jQuery(document).ready(function() {
            cache: true,
            jsonp: "jsonp",
            data: {
-               q: query,
+               q: self.inputQuery,
                format: "JSON"
            },
            beforeSend: function(jqXHR, settings) {
