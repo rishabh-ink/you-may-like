@@ -40,7 +40,11 @@ jQuery(document).ready(function() {
            success: function(data, textStatus, jqXHR) {
                console.log(data, textStatus, jqXHR);
                
-               // TODO Apply bindings to self.items
+               // We want to clear any previous results
+               // so we can use KnockoutJS's convenience method removeAll()
+               self.items.removeAll();
+               
+               // Apply bindings to self.items
                jQuery.each(data.Similar.Results, function(index, value) {
                    var item = new ItemModel(value);
                    self.items.push(item);
