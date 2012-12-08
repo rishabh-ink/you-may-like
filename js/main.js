@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
 
       self.getItems = function() {
          jQuery.ajax({
-           url: "http://www.tastekid.com/ask/ws",
+           url: "http://www.tastekid.com/ask/wsa",
            type: "GET",
            dataType: "jsonp",
            async: true,
@@ -58,6 +58,8 @@ jQuery(document).ready(function() {
                        });
                        self.items.push(item);
                    }
+               } else {
+                   console.error("No data fetched from server.");
                }
            }
          });
