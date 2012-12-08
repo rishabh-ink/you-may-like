@@ -4,11 +4,6 @@ jQuery(document).ready(function() {
 
       self.name = ko.observable("No name");
       self.type = ko.observable("No type");
-
-      return {
-         name: self.name,
-         type: self.type
-      };
    };
 
    var ItemViewModel = function() {
