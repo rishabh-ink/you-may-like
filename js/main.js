@@ -1,9 +1,9 @@
 jQuery(document).ready(function() {
-   var ItemModel = function() {
+   var ItemModel = function(defaultValue) {
       var self = this;
 
-      self.name = ko.observable("No name");
-      self.type = ko.observable("No type");
+      self.name = ko.observable(defaultValue.name || "No name");
+      self.type = ko.observable(defaultValue.type || "No type");
    };
 
    var ItemViewModel = function() {
@@ -39,6 +39,12 @@ jQuery(document).ready(function() {
            },
            success: function(data, textStatus, jqXHR) {
                console.log(data, textStatus, jqXHR);
+               
+               // TODO Apply bindings to self.items
+               jQuery.each(data.Similar.Results, function(index, value) {
+                   var item = new ItemModel(value);
+                   self.items.push(item);
+               });
            }
          });
       };
