@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
 
       self.getItems = function() {
          jQuery.ajax({
-           url: "http://www.tastekid.com/ask/wsa",
+           url: "http://www.tastekid.com/ask/ws",
            type: "GET",
            dataType: "jsonp",
            async: true,
