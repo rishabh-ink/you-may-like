@@ -2,8 +2,8 @@ jQuery(document).ready(function() {
    var ItemModel = function(defaultValue) {
       var self = this;
 
-      self.name = ko.observable(defaultValue.name || "No name");
-      self.type = ko.observable(defaultValue.type || "No type");
+      self.name = ko.observable(defaultValue.Name || "No name");
+      self.type = ko.observable(defaultValue.Type || "No type");
    };
 
    var ItemViewModel = function() {
