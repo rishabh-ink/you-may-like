@@ -44,11 +44,21 @@ jQuery(document).ready(function() {
                // so we can use KnockoutJS's convenience method removeAll()
                self.items.removeAll();
                
-               // Apply bindings to self.items
-               jQuery.each(data.Similar.Results, function(index, value) {
-                   var item = new ItemModel(value);
-                   self.items.push(item);
-               });
+               if(data && data.Similar && data.Similar.Results) {
+                   if(0 !== data.Similar.Results.length) {
+                       // Apply bindings to self.items
+                       jQuery.each(data.Similar.Results, function(index, value) {
+                           var item = new ItemModel(value);
+                           self.items.push(item);
+                       });
+                   } else {
+                       var item = new ItemModel({
+                           "Name": "No data found",
+                           "Type": ""
+                       });
+                       self.items.push(item);
+                   }
+               }
            }
          });
       };
